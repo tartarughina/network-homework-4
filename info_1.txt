@@ -1,0 +1,773 @@
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: example.com
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Example Domain']
+
+URL: example.com
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Not Found', 'Example Domain']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Not Found', 'Example Domain']
+
+URL: example.com
+Usernames: ['edcscec']
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Not Found', 'Example Domain']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Example Domain']
+
+URL: example.com
+Names: ['Intel Mac']
+
+URL: example.com
+Names: ['Not Found', 'Example Domain']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=m8sv5nzk33cx2eo2odl2m; sb=yo7njvuvje8kznh41sgk4d; secret=uxius82f1ynkzmv91a1zw']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=2teu9nvq5pbgo2l3qtv2uh; Path=/; Expires=Sun, 19 Nov 2023 06:24:13 GMT; HttpOnly', 'pq=g2jhnofyf87qlkk5kczrnn; Path=/; Expires=Sun, 19 Nov 2023 06:24:13 GMT; HttpOnly', 'secret=7rsqdjp383kd7hiczrnd5r; Path=/; Expires=Sun, 19 Nov 2023 06:24:13 GMT; HttpOnly']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=g2jhnofyf87qlkk5kczrnn; sb=2teu9nvq5pbgo2l3qtv2uh; secret=7rsqdjp383kd7hiczrnd5r']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=wph9do0i27azdqtmz9cdon; Path=/; Expires=Sun, 19 Nov 2023 06:26:53 GMT; HttpOnly', 'pq=gq5wibzatyqi9jtqsjo749; Path=/; Expires=Sun, 19 Nov 2023 06:26:53 GMT; HttpOnly', 'secret=kt479csil6pvkl60j35p9p; Path=/; Expires=Sun, 19 Nov 2023 06:26:53 GMT; HttpOnly']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=gq5wibzatyqi9jtqsjo749; sb=wph9do0i27azdqtmz9cdon; secret=kt479csil6pvkl60j35p9p']
+
+URL: cs468.cs.uic.edu
+Names: ['First Name']
+Cookies: ['sb=xvek8g23e2sfenbtf28ek; Path=/; Expires=Sun, 19 Nov 2023 06:31:55 GMT; HttpOnly', 'pq=qez4kck8w9qhzhxgirqmav; Path=/; Expires=Sun, 19 Nov 2023 06:31:55 GMT; HttpOnly', 'secret=764z8nph7h3ujez8ikop3; Path=/; Expires=Sun, 19 Nov 2023 06:31:55 GMT; HttpOnly']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=qez4kck8w9qhzhxgirqmav; sb=xvek8g23e2sfenbtf28ek; secret=764z8nph7h3ujez8ikop3']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=1ekgcf2ihtizg6wp8w5rkq; Path=/; Expires=Sun, 19 Nov 2023 06:33:53 GMT; HttpOnly', 'pq=jn77uoz2x23slkz5bb6r2; Path=/; Expires=Sun, 19 Nov 2023 06:33:53 GMT; HttpOnly', 'secret=nqylc2ftraic232d6y7l3i; Path=/; Expires=Sun, 19 Nov 2023 06:33:53 GMT; HttpOnly']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Passwords: ['volevi']
+Credit Cards: ['1234123412341234']
+Names: ['Intel Mac']
+Cookies: ['pq=jn77uoz2x23slkz5bb6r2; sb=1ekgcf2ihtizg6wp8w5rkq; secret=nqylc2ftraic232d6y7l3i']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=4imzx1kgpmoxe0expgb9x; Path=/; Expires=Sun, 19 Nov 2023 06:34:41 GMT; HttpOnly', 'pq=ioopca80nlttpgbfudldm; Path=/; Expires=Sun, 19 Nov 2023 06:34:41 GMT; HttpOnly', 'secret=qx13dehirsopeav3svkdl8; Path=/; Expires=Sun, 19 Nov 2023 06:34:41 GMT; HttpOnly']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Passwords: ['volevi']
+Credit Cards: ['1234123412341234']
+Names: ['Intel Mac']
+Cookies: ['pq=ioopca80nlttpgbfudldm; sb=4imzx1kgpmoxe0expgb9x; secret=qx13dehirsopeav3svkdl8']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=o7yfg9fvolq2fr4jb3cm; Path=/; Expires=Sun, 19 Nov 2023 06:39:21 GMT; HttpOnly', 'pq=e3ra8yjtxb9epgsw0x23lp; Path=/; Expires=Sun, 19 Nov 2023 06:39:21 GMT; HttpOnly', 'secret=fswd12cy8gjledrzyz3ym; Path=/; Expires=Sun, 19 Nov 2023 06:39:21 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=e3ra8yjtxb9epgsw0x23lp; sb=o7yfg9fvolq2fr4jb3cm; secret=fswd12cy8gjledrzyz3ym']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=e3ra8yjtxb9epgsw0x23lp; sb=o7yfg9fvolq2fr4jb3cm; secret=fswd12cy8gjledrzyz3ym']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=e3ra8yjtxb9epgsw0x23lp; sb=o7yfg9fvolq2fr4jb3cm; secret=fswd12cy8gjledrzyz3ym']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=df8bqyduaj4hrhjk1870v8; Path=/; Expires=Sun, 19 Nov 2023 06:52:31 GMT; HttpOnly', 'pq=57o2j0iviobj9tnygtnmn; Path=/; Expires=Sun, 19 Nov 2023 06:52:31 GMT; HttpOnly', 'secret=zl8twkhahznu97j1ytnj29; Path=/; Expires=Sun, 19 Nov 2023 06:52:31 GMT; HttpOnly']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: 10.201.237.35:49601
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: dyn.keepa.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: dyn-2.keepa.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: certs.apple.com
+
+URL: certs.apple.com
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: web.whatsapp.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: gue1-dealer.spotify.com:443
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=57o2j0iviobj9tnygtnmn; sb=df8bqyduaj4hrhjk1870v8; secret=zl8twkhahznu97j1ytnj29']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=wcxs8n7np9ep6tt2mn9v5; Path=/; Expires=Sun, 19 Nov 2023 07:58:13 GMT; HttpOnly', 'pq=e74wt3rj2svihgga8g6fqo; Path=/; Expires=Sun, 19 Nov 2023 07:58:13 GMT; HttpOnly', 'secret=uvjc7wckkj158xm04cwy3; Path=/; Expires=Sun, 19 Nov 2023 07:58:13 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=e74wt3rj2svihgga8g6fqo; sb=wcxs8n7np9ep6tt2mn9v5; secret=uvjc7wckkj158xm04cwy3']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=e74wt3rj2svihgga8g6fqo; sb=wcxs8n7np9ep6tt2mn9v5; secret=uvjc7wckkj158xm04cwy3']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=se6aht7vf5lmn23ji309h8; Path=/; Expires=Sun, 19 Nov 2023 08:03:05 GMT; HttpOnly', 'pq=h0actj5no8mql9q3hbc4f; Path=/; Expires=Sun, 19 Nov 2023 08:03:05 GMT; HttpOnly', 'secret=byigokg8ffjvkx4kpxfg2; Path=/; Expires=Sun, 19 Nov 2023 08:03:05 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=h0actj5no8mql9q3hbc4f; sb=se6aht7vf5lmn23ji309h8; secret=byigokg8ffjvkx4kpxfg2']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=nbh3elwrcorziv765hu37s; Path=/; Expires=Sun, 19 Nov 2023 08:03:51 GMT; HttpOnly', 'pq=nw2miqw31mj5rbac12f2br; Path=/; Expires=Sun, 19 Nov 2023 08:03:51 GMT; HttpOnly', 'secret=lzm15ajm9o7ungaviuqxv; Path=/; Expires=Sun, 19 Nov 2023 08:03:51 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=nw2miqw31mj5rbac12f2br; sb=nbh3elwrcorziv765hu37s; secret=lzm15ajm9o7ungaviuqxv']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=nw2miqw31mj5rbac12f2br; sb=nbh3elwrcorziv765hu37s; secret=lzm15ajm9o7ungaviuqxv']
+
+URL: cs468.cs.uic.edu
+Names: ['First Name']
+Cookies: ['sb=689231t4xu6eqg1cfom414; Path=/; Expires=Sun, 19 Nov 2023 08:11:01 GMT; HttpOnly', 'pq=jk1hf9y39vodub6qtz8gqt; Path=/; Expires=Sun, 19 Nov 2023 08:11:01 GMT; HttpOnly', 'secret=1tgkj5d86ow6g4ce1hc24t; Path=/; Expires=Sun, 19 Nov 2023 08:11:01 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=jk1hf9y39vodub6qtz8gqt; sb=689231t4xu6eqg1cfom414; secret=1tgkj5d86ow6g4ce1hc24t']
+
+URL: cs468.cs.uic.edu
+Names: ['First Name']
+Cookies: ['sb=egymzrsfjlsx7ey8o20rp; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly', 'pq=09knhshjemzxane2yvka07m; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly', 'secret=9oe18cm8ds0aylsxt6tjoc; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly']
+
