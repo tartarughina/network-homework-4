@@ -431,9 +431,10 @@ def handle_client(client_sock: socket, passive_mode: bool):
                     body_length = get_content_length(request)
                     body = get_body(client_sock, body_length).strip().decode("utf-8")
 
-                    print("[*] Body of the post request: ", body)
-
                     passive(request + body, url)
+                    
+                    # Update the client data with the body
+                    client_data = client_data + body.encode("utf-8")
             else:
                 if url == f"{args.address}:{args.port}":
                     print("[*] Obtained data from the client")
@@ -475,6 +476,9 @@ def handle_client(client_sock: socket, passive_mode: bool):
             # Receive the response from the target server
             response_data = get_data(proxy_socket)
 
+            if response_data == b"":  # The client closed the connection
+                break
+
             print(f"[*] Received {len(response_data)} bytes from the server.")
 
             # Split the response into headers and body
@@ -486,6 +490,7 @@ def handle_client(client_sock: socket, passive_mode: bool):
             body_length = get_content_length(headers)
 
             if body_length > 0:
+                print(f"[*] Actual content length: {body_length} vs {len(body)}")
                 body = get_body(proxy_socket, body_length, body)
             
             body, encoding = decode_body(headers, body)

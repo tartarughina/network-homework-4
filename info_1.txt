@@ -771,3 +771,270 @@ URL: cs468.cs.uic.edu
 Names: ['First Name']
 Cookies: ['sb=egymzrsfjlsx7ey8o20rp; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly', 'pq=09knhshjemzxane2yvka07m; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly', 'secret=9oe18cm8ds0aylsxt6tjoc; Path=/; Expires=Sun, 19 Nov 2023 08:15:50 GMT; HttpOnly']
 
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: parmaprenotazione.avis.it
+Names: ['Intel Mac']
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: parma.avisemiliaromagna.it
+Names: ['Intel Mac']
+
+URL: parma.avisemiliaromagna.it
+Names: ['Not Found', 'Provinciale Parma']
+Cookies: ['__wpdm_client=b231fbd767a3e6e7a3337f6ad51e9dce; path=/; HttpOnly']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: parma.avisemiliaromagna.it
+
+URL: parma.avisemiliaromagna.it
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=h0uof2ey2pug2q0984h8em; Path=/; Expires=Sun, 19 Nov 2023 11:00:45 GMT; HttpOnly', 'pq=945sg7wysd5lknhsxcvtmq; Path=/; Expires=Sun, 19 Nov 2023 11:00:45 GMT; HttpOnly', 'secret=l6gfh7e0kc6oli1spmosk; Path=/; Expires=Sun, 19 Nov 2023 11:00:45 GMT; HttpOnly']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=945sg7wysd5lknhsxcvtmq; sb=h0uof2ey2pug2q0984h8em; secret=l6gfh7e0kc6oli1spmosk']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=yejoxotcyqirbbrjs26dm8; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly', 'pq=pcuct1qd1to88j5l378e9h; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly', 'secret=rt5z2yha7pmil4tl7cj8e; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=pcuct1qd1to88j5l378e9h; sb=yejoxotcyqirbbrjs26dm8; secret=rt5z2yha7pmil4tl7cj8e']
+
+URL: cs468.cs.uic.edu
+Names: ['Not Found']
+Cookies: ['sb=ffojvr8dhoq5sbvvfur2f; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly', 'pq=q13ysn8g1j9rkm8shvkzc; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly', 'secret=0vp34xl9n9el4czhr4urlp1; Path=/; Expires=Sun, 19 Nov 2023 11:03:13 GMT; HttpOnly']
+
+URL: certs.apple.com
+
+URL: certs.apple.com
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=q13ysn8g1j9rkm8shvkzc; sb=ffojvr8dhoq5sbvvfur2f; secret=0vp34xl9n9el4czhr4urlp1']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=q13ysn8g1j9rkm8shvkzc; sb=ffojvr8dhoq5sbvvfur2f; secret=0vp34xl9n9el4czhr4urlp1']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=5xxzgedrvvv174ji1nsyya; Path=/; Expires=Sun, 19 Nov 2023 11:05:57 GMT; HttpOnly', 'pq=vny749rg627qss06y976x; Path=/; Expires=Sun, 19 Nov 2023 11:05:57 GMT; HttpOnly', 'secret=btts1oe5u272guavatfvxy; Path=/; Expires=Sun, 19 Nov 2023 11:05:57 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=vny749rg627qss06y976x; sb=5xxzgedrvvv174ji1nsyya; secret=btts1oe5u272guavatfvxy']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=dfeyxu3gtnuedx06ilvd6j; Path=/; Expires=Sun, 19 Nov 2023 11:06:11 GMT; HttpOnly', 'pq=19ip4xo7oi9a75eyaahohb; Path=/; Expires=Sun, 19 Nov 2023 11:06:11 GMT; HttpOnly', 'secret=611tlmsazvyj58kwsl68ir; Path=/; Expires=Sun, 19 Nov 2023 11:06:11 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=19ip4xo7oi9a75eyaahohb; sb=dfeyxu3gtnuedx06ilvd6j; secret=611tlmsazvyj58kwsl68ir']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=19ip4xo7oi9a75eyaahohb; sb=dfeyxu3gtnuedx06ilvd6j; secret=611tlmsazvyj58kwsl68ir']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=hbwxghipcvcvkqmfjmbre; Path=/; Expires=Sun, 19 Nov 2023 17:37:43 GMT; HttpOnly', 'pq=23vwg445u0s5d6tsntn05b; Path=/; Expires=Sun, 19 Nov 2023 17:37:43 GMT; HttpOnly', 'secret=ynu1yrxn8lkbrq3eoduz; Path=/; Expires=Sun, 19 Nov 2023 17:37:43 GMT; HttpOnly']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=23vwg445u0s5d6tsntn05b; sb=hbwxghipcvcvkqmfjmbre; secret=ynu1yrxn8lkbrq3eoduz']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=j1cze8l9bofrrm0jxhxnu; Path=/; Expires=Sun, 19 Nov 2023 17:44:42 GMT; HttpOnly', 'pq=2153qi3bbpc1b6naj0y03d; Path=/; Expires=Sun, 19 Nov 2023 17:44:42 GMT; HttpOnly', 'secret=v1v5udceyhag3syo8x6i; Path=/; Expires=Sun, 19 Nov 2023 17:44:42 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=2153qi3bbpc1b6naj0y03d; sb=j1cze8l9bofrrm0jxhxnu; secret=v1v5udceyhag3syo8x6i']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=2153qi3bbpc1b6naj0y03d; sb=j1cze8l9bofrrm0jxhxnu; secret=v1v5udceyhag3syo8x6i']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=fse1fq0sf5ngd2xjhzozu; Path=/; Expires=Sun, 19 Nov 2023 17:49:10 GMT; HttpOnly', 'pq=1332bwdafih1cybg8jmevl; Path=/; Expires=Sun, 19 Nov 2023 17:49:10 GMT; HttpOnly', 'secret=nno5fybz7lhj1tz2zsgdt; Path=/; Expires=Sun, 19 Nov 2023 17:49:10 GMT; HttpOnly']
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=1332bwdafih1cybg8jmevl; sb=fse1fq0sf5ngd2xjhzozu; secret=nno5fybz7lhj1tz2zsgdt']
+
+URL: cs468.cs.uic.edu
+SSNs: ['111-11-1111']
+Names: ['First Name']
+Phone Numbers: ['123-456-7890']
+Cookies: ['sb=774au2e3aaus7vksjdgb7j; Path=/; Expires=Sun, 19 Nov 2023 20:51:04 GMT; HttpOnly', 'pq=f3hjyw5kus4nq7hmo2oho; Path=/; Expires=Sun, 19 Nov 2023 20:51:04 GMT; HttpOnly', 'secret=an327hgmqis8o8qrocldwi; Path=/; Expires=Sun, 19 Nov 2023 20:51:04 GMT; HttpOnly']
+
+URL: cs468.cs.uic.edu
+Names: ['Intel Mac']
+Cookies: ['pq=f3hjyw5kus4nq7hmo2oho; sb=774au2e3aaus7vksjdgb7j; secret=an327hgmqis8o8qrocldwi']
+
+URL: cs468.cs.uic.edu
+Cookies: ['sb=6qe4rhpbpmocz9mb8ogxyo; Path=/; Expires=Sun, 19 Nov 2023 20:51:15 GMT; HttpOnly', 'pq=rymecb5e4i0l642k0gsuh8; Path=/; Expires=Sun, 19 Nov 2023 20:51:15 GMT; HttpOnly', 'secret=jfjqwv6sfrdz0zkeif99a; Path=/; Expires=Sun, 19 Nov 2023 20:51:15 GMT; HttpOnly']
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+
