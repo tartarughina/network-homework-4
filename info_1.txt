@@ -1,22 +1,71 @@
 URL: cs468.cs.uic.edu
-password_param: impossibile
-state: IL
-city: wdcdwcdwcdcdw
-phone_param: 123-323-2323
-phone: 123-323-2323
-ssn: 111-11-2222
-credit_card_param: 1234123412341234
-birthday: 2023-11-11
-last: dcwcdwcwc
-first: dscscdc
-email_param: riccardo%40example.com
-credit_card: 1234123412341234
-ssn_param: 111-11-2222
 name: Intel Mac
-cookie: pq=bns0utgdo7st7gpxy915p; sb=hwpkumjwit9li7yswg2op; secret=n4c1hpk6jhps5ctnrue9c
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
 
 URL: cs468.cs.uic.edu
-cookie: sb=3r5fcb4iod8jvrvtwnofma; Path=/; Expires=Mon, 20 Nov 2023 09:48:12 GMT; HttpOnly
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
 
 URL: gue1-dealer.spotify.com:443
 name: Intel Mac
@@ -36,6 +85,263 @@ name: Intel Mac
 URL: gue1-dealer.spotify.com:443
 name: Intel Mac
 
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
 URL: gue1-dealer.spotify.com:443
 name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=26ta1dyfzd8j3comp8aod2u; sb=sf3lajsc35cz5zuy58g07; secret=5ayrs60wrj7e3e41rjiwg
+
+URL: cs468.cs.uic.edu
+phone: 123-, 123-
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=bx3sel9uz1s6g9z346djnv; Path=/; Expires=Fri, 24 Nov 2023 11:35:21 GMT; HttpOnly, pq=e9j6qnqamwtief9g97etm; Path=/; Expires=Fri, 24 Nov 2023 11:35:21 GMT; HttpOnly, secret=e3jxah4d2acyy815dmfp9; Path=/; Expires=Fri, 24 Nov 2023 11:35:21 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+password: Eh+volevi
+state: IL
+city: Chicago
+phone_param: 708-219-2431
+phone: 708-
+address_param: 410+S+Morgan+St
+birthday: 1999-01-28
+last: Strina
+first: Riccardo
+email_param: riccardo.strina@mail.polimi.it
+email: riccardo.strina@mail.polimi.it
+name: Intel Mac
+cookie: pq=e9j6qnqamwtief9g97etm; sb=bx3sel9uz1s6g9z346djnv; secret=e3jxah4d2acyy815dmfp9
+
+URL: cs468.cs.uic.edu
+cookie: sb=8zvdhqtpo2ouwu5uw005lb; Path=/; Expires=Fri, 24 Nov 2023 11:36:21 GMT; HttpOnly, pq=fxa5a000eeext73jfuvirr; Path=/; Expires=Fri, 24 Nov 2023 11:36:21 GMT; HttpOnly, secret=yp2kb2zcozpyshntb8h248; Path=/; Expires=Fri, 24 Nov 2023 11:36:21 GMT; HttpOnly
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+state: IL
+city: Chicago
+phone_param: 708-219-2431
+phone: 708-219-2431
+address_param: 410+S+Morgan+St
+birthday: 1999-01-28
+last: Strina
+first: Riccardo
+email_param: riccardo.strina@mail.polimi.it
+email: riccardo.strina@mail.polimi.it
+name: Intel Mac
+cookie: pq=fxa5a000eeext73jfuvirr; sb=8zvdhqtpo2ouwu5uw005lb; secret=yp2kb2zcozpyshntb8h248
+
+URL: cs468.cs.uic.edu
+cookie: sb=puathmh2l4q0xpu48a4y95; Path=/; Expires=Fri, 24 Nov 2023 11:39:47 GMT; HttpOnly, pq=zoaf4c2s3rbr8x0o662mhn; Path=/; Expires=Fri, 24 Nov 2023 11:39:47 GMT; HttpOnly, secret=g0k3c0iz73giqpyj23sp5e; Path=/; Expires=Fri, 24 Nov 2023 11:39:47 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+state: IL
+city: Chicago
+phone_param: 708-219-2431
+phone: 708-219-2431
+address_param: 410+S+Morgan+St
+birthday: 1999-01-28
+last: Strina
+first: Riccardo
+email_param: riccardo.strina@mail.polimi.it
+email: riccardo.strina@mail.polimi.it
+name: Intel Mac
+cookie: pq=zoaf4c2s3rbr8x0o662mhn; sb=puathmh2l4q0xpu48a4y95; secret=g0k3c0iz73giqpyj23sp5e
+
+URL: cs468.cs.uic.edu
+cookie: sb=2olee9g47cq827c1ahaolg; Path=/; Expires=Fri, 24 Nov 2023 11:42:15 GMT; HttpOnly, pq=1ds7hs1p1v374ydbkhs1nq; Path=/; Expires=Fri, 24 Nov 2023 11:42:15 GMT; HttpOnly, secret=y6zhfitpa70ojexbcpow8n; Path=/; Expires=Fri, 24 Nov 2023 11:42:15 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=1ds7hs1p1v374ydbkhs1nq; sb=2olee9g47cq827c1ahaolg; secret=y6zhfitpa70ojexbcpow8n
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=shjz5it2wyjdif3vxpwrvv; Path=/; Expires=Fri, 24 Nov 2023 11:42:18 GMT; HttpOnly, pq=i27w0cbsy6qm2uzrrt0nes; Path=/; Expires=Fri, 24 Nov 2023 11:42:18 GMT; HttpOnly, secret=8bys8l58acgwzc044d1s3m; Path=/; Expires=Fri, 24 Nov 2023 11:42:18 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=i27w0cbsy6qm2uzrrt0nes; sb=shjz5it2wyjdif3vxpwrvv; secret=8bys8l58acgwzc044d1s3m
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=qnk2f2tkig1pmwvwowzbw; Path=/; Expires=Fri, 24 Nov 2023 11:42:32 GMT; HttpOnly, pq=o83yj4oviyzbzmzw1sm4f; Path=/; Expires=Fri, 24 Nov 2023 11:42:32 GMT; HttpOnly, secret=92flsmtmri514z4g8b5lpo; Path=/; Expires=Fri, 24 Nov 2023 11:42:32 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=o83yj4oviyzbzmzw1sm4f; sb=qnk2f2tkig1pmwvwowzbw; secret=92flsmtmri514z4g8b5lpo
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=mqr8ti47tp8grjpe7lr5ai; Path=/; Expires=Fri, 24 Nov 2023 11:42:43 GMT; HttpOnly, pq=0pt43ygjimalkt3k6bb15if; Path=/; Expires=Fri, 24 Nov 2023 11:42:43 GMT; HttpOnly, secret=3jodhom621jxhyi294sr6j; Path=/; Expires=Fri, 24 Nov 2023 11:42:43 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=0pt43ygjimalkt3k6bb15if; sb=mqr8ti47tp8grjpe7lr5ai; secret=3jodhom621jxhyi294sr6j
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=8u89i5be6lc16gy1a45exr; Path=/; Expires=Fri, 24 Nov 2023 11:43:03 GMT; HttpOnly, pq=zynmz8g5qgllehfigcu9ae; Path=/; Expires=Fri, 24 Nov 2023 11:43:03 GMT; HttpOnly, secret=fm5o3cakh2apsxnobqspab; Path=/; Expires=Fri, 24 Nov 2023 11:43:03 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=zynmz8g5qgllehfigcu9ae; sb=8u89i5be6lc16gy1a45exr; secret=fm5o3cakh2apsxnobqspab
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=djdx7zvfqrzq00o4fuzzc; Path=/; Expires=Fri, 24 Nov 2023 11:43:11 GMT; HttpOnly, pq=uvjmdtsb2r8bgxdybdqpmr; Path=/; Expires=Fri, 24 Nov 2023 11:43:11 GMT; HttpOnly, secret=dpe4slcy3ybzipqqutww5t; Path=/; Expires=Fri, 24 Nov 2023 11:43:11 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=uvjmdtsb2r8bgxdybdqpmr; sb=djdx7zvfqrzq00o4fuzzc; secret=dpe4slcy3ybzipqqutww5t
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=1hsrcnhssgq5mvnvq64l85; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, pq=nbi7l29wzkb48jsux1om2w; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, secret=tezitunmxnliwxqnp8egv8; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=nbi7l29wzkb48jsux1om2w; sb=1hsrcnhssgq5mvnvq64l85; secret=tezitunmxnliwxqnp8egv8
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=ip2wwixhsqciljm6z2bvio; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, pq=51p3d61dfow6j7harzul99; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, secret=kixo7y1tz7b2aijp64akb4; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=51p3d61dfow6j7harzul99; sb=ip2wwixhsqciljm6z2bvio; secret=kixo7y1tz7b2aijp64akb4
+
+URL: cs468.cs.uic.edu
+name: Intel Mac
+cookie: pq=51p3d61dfow6j7harzul99; sb=ip2wwixhsqciljm6z2bvio; secret=kixo7y1tz7b2aijp64akb4
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=h5okopz9wfg1o12mnn5lt7; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, pq=c94m5tc9coixtbkxmvt7g; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, secret=qhpzrpm0drrean8bxpsmsu; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=9c4hzylooh4pr3tquh917g; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, pq=f0ba6oduxng5h8uf2zemcf; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly, secret=pxopsmo7o5hwaiytl5b4e; Path=/; Expires=Fri, 24 Nov 2023 11:43:13 GMT; HttpOnly
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+state: IL
+city: Chicago
+phone_param: 708-219-2431
+phone: 708-219-2431
+last: Vallerano
+first: Riccardo
+email_param: ricc@example.com
+email: ricc@example.com
+name: Intel Mac
+cookie: pq=f0ba6oduxng5h8uf2zemcf; sb=9c4hzylooh4pr3tquh917g; secret=pxopsmo7o5hwaiytl5b4e
+
+URL: cs468.cs.uic.edu
+cookie: sb=padr1fv4szdgobk61q6i; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly, pq=5fj28ivetx2cb7j28ew9xo; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly, secret=6l45e7vmygs5xzequb8h4; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly
 
