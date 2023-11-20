@@ -345,3 +345,125 @@ cookie: pq=f0ba6oduxng5h8uf2zemcf; sb=9c4hzylooh4pr3tquh917g; secret=pxopsmo7o5h
 URL: cs468.cs.uic.edu
 cookie: sb=padr1fv4szdgobk61q6i; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly, pq=5fj28ivetx2cb7j28ew9xo; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly, secret=6l45e7vmygs5xzequb8h4; Path=/; Expires=Fri, 24 Nov 2023 11:43:48 GMT; HttpOnly
 
+URL: cs468.cs.uic.edu
+name: Intel Mac
+
+URL: cs468.cs.uic.edu
+phone: 123-456-7890, 123-456-7890
+ssn: 111-11-1111, 111-11-1111
+name: First Name, Last Name, Credit Card, First Name, Last Name, Credit Card
+cookie: sb=hhny7sh4pu60ylbqvdej5mq; Path=/; Expires=Fri, 24 Nov 2023 21:35:10 GMT; HttpOnly, pq=2rdok2rhrg79voafiifdff; Path=/; Expires=Fri, 24 Nov 2023 21:35:10 GMT; HttpOnly, secret=bmn64a904gbv6t0yanzjsn; Path=/; Expires=Fri, 24 Nov 2023 21:35:10 GMT; HttpOnly
+Top Names: Control: public, max -age=0
+
+URL: wss-backup.slack.com:443
+name: Intel Mac
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+Top Names: Cache-Control: max -age=7200
+
+URL: wss-primary.slack.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+Top Names: Cache-Control: max -age=7200
+
+URL: ocsp.digicert.com
+
+URL: ocsp.digicert.com
+Top Names: Cache-Control: max -age=7200
+
+URL: cs468.cs.uic.edu
+password: password
+state: IL
+city: Chicago
+phone_param: 123-123-1231
+phone: 123-123-1231
+ssn: 111-11-1111
+address_param: 410+S+Morgan+St
+birthday: 1999-01-28
+last: Ericson
+first: Jacob
+email_param: Jacob.ericson@uic.edu
+email: Jacob.ericson@uic.edu
+ssn_param: 111-11-1111
+name: Intel Mac
+cookie: pq=2rdok2rhrg79voafiifdff; sb=hhny7sh4pu60ylbqvdej5mq; secret=bmn64a904gbv6t0yanzjsn
+Top Names: submit?firstname= Jacob &lastname=Ericson, 28&email= Jacob .ericson@uic, 410+S+ Morgan +St&credit
+
+URL: cs468.cs.uic.edu
+cookie: sb=ntmh9ynah7ixjiw657io6p; Path=/; Expires=Fri, 24 Nov 2023 21:36:28 GMT; HttpOnly, pq=g46wn9iii85ihkcvjrje1; Path=/; Expires=Fri, 24 Nov 2023 21:36:28 GMT; HttpOnly, secret=o0iahtv673mytsweqyp6n; Path=/; Expires=Fri, 24 Nov 2023 21:36:28 GMT; HttpOnly
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+Top Names: Control: public, max -age=14400
+
+URL: ocsp.pki.goog
+Top Names: Control: public, max -age=14400
+
+URL: web.whatsapp.com:443
+name: Intel Mac
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+Top Names: Control: public, max -age=14400
+
+URL: ocsp.pki.goog
+Top Names: Control: public, max -age=14400
+
+URL: wss-backup.slack.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: wss-primary.slack.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: wss-backup.slack.com:443
+name: Intel Mac
+
+URL: wss-primary.slack.com:443
+name: Intel Mac
+
+URL: ocsp.pki.goog
+
+URL: ocsp.pki.goog
+Top Names: Control: public, max -age=14400
+
+URL: wss-backup.slack.com:443
+name: Intel Mac
+
+URL: wss-primary.slack.com:443
+name: Intel Mac
+
+URL: wss-backup.slack.com:443
+name: Intel Mac
+
+URL: gue1-dealer.spotify.com:443
+name: Intel Mac
+
+URL: wss-primary.slack.com:443
+name: Intel Mac
+

