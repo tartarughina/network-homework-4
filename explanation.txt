@@ -5,13 +5,13 @@
 https://medium.com/@gdieu/build-a-tcp-proxy-in-python-part-1-3-7552cd5afdfe
 https://www.geeksforgeeks.org/creating-a-proxy-webserver-in-python-set-1/
 
-My first iteration of the proxy was based on the examples found in the links above, on top of that I've added all the functions required to achieve a passive and active behavior of the proxy.
+My first iteration of the proxy was based on the examples found in the links above.
 This very barebone version was able to receive requests, forward them to server and do the same thing for the other way around.
 I started by doing the passive mode since it was the easiest one, by creating a series of regex to obtain all the info that I may have been interested into.
 The first road block I had to face was the compression applied on the response from servers for websites like example.com.
 By analyzing the headers I was able to identify the compression required and decompress the response's body to read it.
 The next issue I had to face was related to POST requets, where the client sends first the headers and in a second stream the body.
-For this reason I had to get the Content-Length's value and read on the socket again for that amount of bytes.
+For this reason I had to get the Content-Length's value and read on the client's socket again for that amount of bytes.
 With this done the only fixes I had to do on this part was related to tuning the regex.
 For the active part most of the work has been done, I had to face only two major issues.
 The first one was related to responses' Content-Length: since by injecting the script I was increasing the size of the body I had to change that value.
